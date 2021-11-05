@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import AttendPage from "./components/AttendPage";
 import FindIdPw from "./components/FindIdPw";
@@ -7,6 +7,7 @@ import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import Profilepage from "./components/Profilepage";
 import SelectPage from "./components/SelectPage";
+import AdminPage_Top from "./components/AdminPage_Top";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/Grouppage" component={GroupPage} />
           <Route path="/findIDPW" component={FindIdPw} />
           <Route path="/profile" component={Profilepage} />
+          <Route path="/AdminPage_Top" component={AdminPage_Top} />
         </Switch>
       </div>
       <div style={{ padding: 20, border: "5px solid gray" }}>
@@ -40,6 +42,8 @@ export default function App() {
         <Link to="/findIDPW">아이디비번찾기</Link>
         <br />
         <Link to="/profile">프로필화면</Link>
+        <br />
+        <Link to="/AdminPage_Top">관리자 화면</Link>
         <br />
       </div>
     </BrowserRouter>
