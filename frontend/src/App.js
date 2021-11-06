@@ -5,7 +5,7 @@ import FindIdPw from "./components/FindIdPw";
 import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
-import Profilepage from "./components/Profilepage";
+import Profilepage from "./components/Profilepage_Top";
 import SelectPage from "./components/SelectPage";
 import AdminPage_Top from "./components/AdminPage_Top";
 
