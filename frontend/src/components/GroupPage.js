@@ -21,16 +21,18 @@ export default function GroupPage() {
 
         <div>
           <h1 style={{ display: "inline-block" }}>SelectedOTT</h1>
-          <Link
-            to="/profile"
-            style={{
-              textDecoration: "none",
-              marginLeft: "10px",
-              marginRight: "10px",
-            }}
-          >
-            Profile
-          </Link>
+          <button>
+            <Link
+              to="/profile"
+              style={{
+                textDecoration: "none",
+                marginLeft: "10px",
+                marginRight: "10px",
+              }}
+            >
+              Profile
+            </Link>
+          </button>
         </div>
       </div>
       {/* 헤더 부분 끝 */}
@@ -138,9 +140,11 @@ export default function GroupPage() {
         }}
       >
         <div style={{ marginLeft: "auto" }}>
-          <Link to="/" style={{ textDecoration: "none", marginRight: "5px" }}>
-            outGroup
-          </Link>
+          <button>
+            <Link to="/" style={{ textDecoration: "none", marginRight: "5px" }}>
+              outGroup
+            </Link>
+          </button>
         </div>
       </div>
       {/* 탈퇴 부분 끝 */}

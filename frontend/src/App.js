@@ -13,25 +13,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
+        레이아웃 구성확인용
+        <br />
         <Link to="/">홈</Link>
         <br />
         <Link to="/login">로그인</Link>
-        <br />
-      </div>
-      <div>
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/selectOTT" component={SelectPage} />
-          <Route path="/attendGroup" component={AttendPage} />
-          <Route path="/Grouppage" component={GroupPage} />
-          <Route path="/findIDPW" component={FindIdPw} />
-          <Route path="/profile" component={Profilepage} />
-          <Route path="/AdminPage_Top" component={AdminPage_Top} />
-        </Switch>
-      </div>
-      <div style={{ padding: 20, border: "5px solid gray" }}>
-        레이아웃 구성확인용
         <br />
         <Link to="/selectOTT">OTT선택</Link>
         <br />
@@ -45,6 +31,18 @@ export default function App() {
         <br />
         <Link to="/AdminPage_Top">관리자 화면</Link>
         <br />
+      </div>
+      <div>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/selectOTT" component={SelectPage} />
+          <Route path="/attendGroup" component={AttendPage} />
+          <Route path="/Grouppage" component={GroupPage} />
+          <Route path="/findIDPW" component={FindIdPw} />
+          <Route path="/profile" component={Profilepage} />
+          <Route path="/AdminPage_Top" component={AdminPage_Top} />
+        </Switch>
       </div>
     </BrowserRouter>
   );
