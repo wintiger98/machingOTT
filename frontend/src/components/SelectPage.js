@@ -66,7 +66,7 @@ export default function SelectPage() {
                 width: "auto",
                 height: "30vh",
                 backgroundColor: "#ffecee",
-                marginBottom: "10px",
+                marginBottom: "30px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -84,59 +84,36 @@ export default function SelectPage() {
                   flexWrap: "wrap",
                 }}
               >
-                <button>
-                  <Link
-                    to="/attendGroup"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    넷플릭스
-                  </Link>
-                </button>
-                <button>
-                  <Link
-                    to="/attendGroup"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    웨이브
-                  </Link>
-                </button>
-                <button>
-                  <Link
-                    to="/attendGroup"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    왓챠
-                  </Link>
-                </button>
-                <button>
-                  <Link
-                    to="/attendGroup"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    라프텔
-                  </Link>
-                </button>
-                <button>
-                  <Link
-                    to="/attendGroup"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    티빙
-                  </Link>
-                </button>
+                <button>넷플릭스</button>
+                <button>웨이브</button>
+                <button>왓챠</button>
+                <button>라프텔</button>
+                <button>티빙</button>
               </div>
             </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "auto",
+                height: "6vh",
+                backgroundColor: "#ffecee",
+              }}
+            >
+              <button style={{}}>
+                <Link
+                  to="/Grouppage"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  그룹참가
+                </Link>
+              </button>
+            </div>
           </div>
+
           <div style={{ flexBasis: "30%", flexShrink: "0" }}></div>
         </div>
       </div>
