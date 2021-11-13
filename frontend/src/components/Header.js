@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Font.css";
-import Button from "@restart/ui/esm/Button";
-import { blue } from "@material-ui/core/colors";
 
 const Header = () => (
   <div style={{ width: "100%", margin: "0" }}>
@@ -90,26 +88,42 @@ const Header = () => (
       </div>
 
       {/*profile logo, go to profile page*/}
-      <div class="SignBtn">
-        <Button
+      <div
+        class="header_login"
+        style={{
+          justifyContent: "center",
+          display: "block",
+          paddingRight: 40,
+          alignItems: "center",
+        }}
+      >
+        <a
+          href="/login"
           style={{
+            padding: 40,
             fontFamily: "GmarketSansLight",
-            marginRight: "1rem",
+            fontSize: "18px",
+            fontWeight: "bold",
+            textDecoration: "none",
+            color: "black",
           }}
         >
-          Log in
-        </Button>
-        <Button
+          로그인
+        </a>
+        <a
+          href="/login"
           style={{
             fontFamily: "GmarketSansLight",
-            marginRight: "1rem",
+            fontSize: "18px",
+            fontWeight: "bold",
+            textDecoration: "none",
+            color: "black",
           }}
         >
-          Sign up
-        </Button>
+          회원가입
+        </a>
       </div>
     </div>
-
     <hr />
   </div>
 );
