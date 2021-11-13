@@ -1,9 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
+import Header from "./Header";
 
-export default function FindIdPw() {
-  return (
-    <div>
-      <h1>find id & password</h1>
-    </div>
-  );
+class FindIdPw extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+      </div>
+    );
+  }
 }
+export default FindIdPw;
