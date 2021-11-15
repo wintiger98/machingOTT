@@ -5,7 +5,9 @@ import FindIdPw from "./components/FindIdPw";
 import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
-import Profilepage from "./components/Profilepage_Top";
+import ProfilePage_Top from "./components/ProfilePage_Top";
+import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
+import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
 import SelectPage from "./components/SelectPage";
 import AdminPage_Top from "./components/AdminPage_Top";
 
@@ -23,13 +25,13 @@ export default function App() {
         <br />
         <Link to="/attendGroup">그룹참가</Link>
         <br />
-        <Link to="/Grouppage">그룹페이지</Link>
+        <Link to="/groupPage">그룹페이지</Link>
         <br />
         <Link to="/findIDPW">아이디비번찾기</Link>
         <br />
         <Link to="/profile">프로필화면</Link>
         <br />
-        <Link to="/AdminPage_Top">관리자 화면</Link>
+        <Link to="/admin">관리자 화면</Link>
         <br />
       </div>
       <div>
@@ -38,10 +40,12 @@ export default function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/selectOTT" component={SelectPage} />
           <Route path="/attendGroup" component={AttendPage} />
-          <Route path="/Grouppage" component={GroupPage} />
+          <Route path="/groupPage" component={GroupPage} />
           <Route path="/findIDPW" component={FindIdPw} />
-          <Route path="/profile" component={Profilepage} />
-          <Route path="/AdminPage_Top" component={AdminPage_Top} />
+          <Route exact path="/profile/management" component={ProfilePage_Management} />
+          <Route exact path="/profile/payment" component={ProfilePage_Payment} />
+          <Route path="/profile" component={ProfilePage_Top} />
+          <Route path="/admin" component={AdminPage_Top} />
         </Switch>
       </div>
     </BrowserRouter>
