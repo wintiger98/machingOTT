@@ -13,6 +13,23 @@ export default function GroupPage() {
       {/* 상단 바 시작 */}
       <Header LoginState={true} AttendState={true} />
       {/* 상단 바 끝 */}
+      <div>
+        <div>
+          <h1 style={{ display: "inline-block" }}>SelectedOTT</h1>
+          <button>
+            <Link
+              to="/profile"
+              style={{
+                textDecoration: "none",
+                marginLeft: "10px",
+                marginRight: "10px",
+              }}
+            >
+              Profile
+            </Link>
+          </button>
+        </div>
+      </div>
 
       {/* 정보&채팅 부분 시작 */}
       <div
@@ -29,6 +46,7 @@ export default function GroupPage() {
             style={{
               backgroundColor: "whitesmoke",
               margin: "10px",
+              paddig: "10px",
               width: "auto",
               height: "20%",
             }}

@@ -4,7 +4,9 @@ import FindIdPw from "./components/FindIdPw";
 import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
-import Profilepage from "./components/Profilepage_Top";
+import ProfilePage_Top from "./components/ProfilePage_Top";
+import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
+import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
 import SelectPage from "./components/SelectPage";
 import AdminPage_Top from "./components/AdminPage_Top";
 import PrivateRoute from "./routers/PrivateRoute";
@@ -32,7 +34,7 @@ export default function App() {
         <br />
         <Link to="/profile">프로필화면</Link>
         <br />
-        <Link to="/AdminPage_Top">관리자 화면</Link>
+        <Link to="/admin">관리자 화면</Link>
         <br />
       </div>
       <div>
