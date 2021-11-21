@@ -5,7 +5,7 @@ import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import ProfilePage_Top from "./components/ProfilePage_Top";
-import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
+//import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
 import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
 import SelectPage from "./components/SelectPage";
 import AdminPage_Top from "./components/AdminPage_Top";
@@ -16,13 +16,13 @@ import AdminRoute from "./routers/AdminRoute";
 export default function App() {
   const [isLogin, setisLogin] = useState(false);
   const [isAdmin, setisAdmin] = useState(false);
-
+  console.log(isLogin);
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
         레이아웃 구성확인용
         <br />
-        <Link to="/">홈</Link>
+        <Link to={{ pathname: "/", state: isLogin }}>홈</Link>
         <br />
         <Link to="/login">로그인</Link>
         <br />
@@ -32,9 +32,11 @@ export default function App() {
         <br />
         <Link to="/findIDPW">아이디비번찾기</Link>
         <br />
-        <Link to="/profile">프로필화면</Link>
+        <Link to="/profile_top">프로필화면</Link>
         <br />
-        <Link to="/admin">관리자 화면</Link>
+        <Link to="/AdminPage_Top">관리자 화면</Link>
+        <br />
+        <Link to="/profile_manage">프로필 수정 화면</Link>
         <br />
       </div>
       <div>
@@ -67,12 +69,18 @@ export default function App() {
             exact
           />
           <PrivateRoute
-            component={Profilepage}
+            component={ProfilePage_Top}
             isLogin={isLogin}
-            path="/profile"
+            path="/profile_top"
             exact
           />
 
+          <PrivateRoute
+            component={ProfilePage_Management}
+            isLogin={isLogin}
+            path="/profile_manage"
+            exact
+          />
           <AdminRoute
             component={AdminPage_Top}
             isAdmin={isAdmin}

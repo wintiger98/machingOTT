@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
-export default function MainPage() {
+export default function MainPage(props) {
   const [isLogin, setisLogin] = useState(false);
   const [isAttend, setisAttend] = useState(false);
+
+  console.log(props.location.state);
+  useEffect(() => {
+    setisLogin(props.location.state);
+  }, [props.location.state]);
+
   return (
     <div>
       <Header LoginState={isLogin} AttendState={isAttend} />
