@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import AttendPage from "./components/AttendPage";
 import FindIdPw from "./components/FindIdPw";
 import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
@@ -8,8 +7,14 @@ import MainPage from "./components/MainPage";
 import Profilepage from "./components/Profilepage_Top";
 import SelectPage from "./components/SelectPage";
 import AdminPage_Top from "./components/AdminPage_Top";
+import PrivateRoute from "./routers/PrivateRoute";
+import PublicRoute from "./routers/PublicRoute";
+import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
+  const [isLogin, setisLogin] = useState(false);
+  const [isAdmin, setisAdmin] = useState(false);
+
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
@@ -20,8 +25,6 @@ export default function App() {
         <Link to="/login">로그인</Link>
         <br />
         <Link to="/selectOTT">OTT선택</Link>
-        <br />
-        <Link to="/attendGroup">그룹참가</Link>
         <br />
         <Link to="/Grouppage">그룹페이지</Link>
         <br />
@@ -35,13 +38,45 @@ export default function App() {
       <div>
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/selectOTT" component={SelectPage} />
-          <Route path="/attendGroup" component={AttendPage} />
-          <Route path="/Grouppage" component={GroupPage} />
-          <Route path="/findIDPW" component={FindIdPw} />
-          <Route path="/profile" component={Profilepage} />
-          <Route path="/AdminPage_Top" component={AdminPage_Top} />
+          <PublicRoute
+            restricted
+            component={LoginPage}
+            isLogin={isLogin}
+            path="/login"
+            exact
+          />
+          <PublicRoute
+            restricted
+            component={FindIdPw}
+            isLogin={isLogin}
+            path="/findIDPW"
+            exact
+          />
+          <PrivateRoute
+            component={SelectPage}
+            isLogin={isLogin}
+            path="/selectOTT"
+            exact
+          />
+          <PrivateRoute
+            component={GroupPage}
+            isLogin={isLogin}
+            path="/Grouppage"
+            exact
+          />
+          <PrivateRoute
+            component={Profilepage}
+            isLogin={isLogin}
+            path="/profile"
+            exact
+          />
+
+          <AdminRoute
+            component={AdminPage_Top}
+            isAdmin={isAdmin}
+            path="/AdminPage_Top"
+            exact
+          />
         </Switch>
       </div>
     </BrowserRouter>

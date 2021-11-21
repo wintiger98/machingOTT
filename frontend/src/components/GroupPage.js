@@ -1,41 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 
 export default function GroupPage() {
+  const [numOfUser, setNumOfUser] = useState(0);
+  const [groupid, setGroupid] = useState("");
+  const [OTTname, setOTTname] = useState("");
+  const [username, setUsername] = useState([]);
+
   return (
     <div>
-      {/* 헤더 부분 시작 */}
-      <div
-        style={{
-          width: "auto",
-          height: "100px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundColor: "coral",
-        }}
-      >
-        <div>
-          <h1>GroupName</h1>
-        </div>
-
-        <div>
-          <h1 style={{ display: "inline-block" }}>SelectedOTT</h1>
-          <button>
-            <Link
-              to="/profile"
-              style={{
-                textDecoration: "none",
-                marginLeft: "10px",
-                marginRight: "10px",
-              }}
-            >
-              Profile
-            </Link>
-          </button>
-        </div>
-      </div>
-      {/* 헤더 부분 끝 */}
+      {/* 상단 바 시작 */}
+      <Header LoginState={true} AttendState={true} />
+      {/* 상단 바 끝 */}
 
       {/* 정보&채팅 부분 시작 */}
       <div

@@ -1,42 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header";
+
 export default function SelectPage() {
+  const [username, setUsername] = useState("");
+  const [OTTname, setOTTname] = useState("");
+  const [isAttended, setIsAttended] = useState(true);
+  const [currentGroup, setCurrentGroup] = useState(0);
+
+  const OTTLogoImage = {
+    NETFLIX:
+      "https://www.freepnglogos.com/uploads/netflix-logo-circle-png-5.png",
+    WATCHA:
+      "https://upload.wikimedia.org/wikipedia/commons/b/b8/%EC%99%93%EC%B1%A0_%EB%A1%9C%EA%B3%A0_2021.png",
+    WAVVE: "https://www.gcon.or.kr/fileDownload?titleId=9992&fileId=2",
+    TVING:
+      "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/TVING_logo.svg/512px-TVING_logo.svg.png",
+  };
+
   return (
     <div>
       {/* 상단 바 시작 */}
-      <div
-        style={{
-          width: "auto",
-          height: "100px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundColor: "coral",
-        }}
-      >
-        <div style={{ marginLeft: "10px" }}>
-          <h1>UOMS</h1>
-        </div>
-
-        <div>
-          <h1 style={{ display: "inline-block", marginRight: "10px" }}>X</h1>
-          <button
-            style={{
-              marginLeft: "10px",
-              marginRight: "10px",
-            }}
-          >
-            <Link
-              to="/profile"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              Profile
-            </Link>
-          </button>
-        </div>
-      </div>
+      <Header LoginState={true} AttendState={isAttended} />
       {/* 상단바 끝 */}
 
       {/* 본문 시작 */}
@@ -84,11 +69,58 @@ export default function SelectPage() {
                   flexWrap: "wrap",
                 }}
               >
-                <button>넷플릭스</button>
-                <button>웨이브</button>
-                <button>왓챠</button>
-                <button>라프텔</button>
-                <button>티빙</button>
+                <img
+                  style={{
+                    display: "inline-block",
+                    width: "15%",
+                    height: "10vh",
+                  }}
+                  src={OTTLogoImage.NETFLIX}
+                  alt="NETFLIX Logo Image"
+                  onClick={function () {
+                    setOTTname("NETFLIX");
+                    console.log(OTTname);
+                  }}
+                />
+                <img
+                  style={{
+                    display: "inline-block",
+                    width: "15%",
+                    height: "10vh",
+                  }}
+                  src={OTTLogoImage.WATCHA}
+                  alt="WATCHA Logo Image"
+                  onClick={function () {
+                    setOTTname("WATCHA");
+                    console.log(OTTname);
+                  }}
+                />
+                <img
+                  style={{
+                    display: "inline-block",
+                    width: "15%",
+                    height: "10vh",
+                  }}
+                  src={OTTLogoImage.WAVVE}
+                  alt="WAVVE Logo Image"
+                  onClick={function () {
+                    setOTTname("WAVVE");
+                    console.log(OTTname);
+                  }}
+                />
+                <img
+                  style={{
+                    display: "inline-block",
+                    width: "15%",
+                    height: "10vh",
+                  }}
+                  src={OTTLogoImage.TVING}
+                  alt="TVING Logo Image"
+                  onClick={function () {
+                    setOTTname("TVING");
+                    console.log(OTTname);
+                  }}
+                />
               </div>
             </div>
             <div
