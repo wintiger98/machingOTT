@@ -4,17 +4,18 @@ import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import ProfilePage_Top from "./components/ProfilePage_Top";
-// import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
-// import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
 import SelectPage from "./components/SelectPage";
-import AdminPage_Top from "./components/AdminPage_Top";
 import PrivateRoute from "./routers/PrivateRoute";
 import PublicRoute from "./routers/PublicRoute";
-import AdminRoute from "./routers/AdminRoute";
+// import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
+// import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
+// import AdminPage_Top from "./components/AdminPage_Top";
+// import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
   const [isLogin, setisLogin] = useState(false);
-  const [isAdmin, setisAdmin] = useState(false);
+  const [isAttend, setisAttend] = useState();
+
   console.log(isLogin);
   return (
     <BrowserRouter>
@@ -31,10 +32,6 @@ export default function App() {
         <br />
         <Link to="/profile_top">프로필화면</Link>
         <br />
-        <Link to="/AdminPage_Top">관리자 화면</Link>
-        <br />
-        {/* <Link to="/profile_manage">프로필 수정 화면</Link>
-        <br /> */}
       </div>
       <div>
         <Switch>
@@ -70,12 +67,12 @@ export default function App() {
             path="/profile_manage"
             exact
           /> */}
-          <AdminRoute
+          {/* <AdminRoute
             component={AdminPage_Top}
             isAdmin={isAdmin}
             path="/AdminPage_Top"
             exact
-          />
+          /> */}
         </Switch>
       </div>
     </BrowserRouter>
@@ -115,3 +112,10 @@ export default function App() {
 //         );
 //     }
 // }
+// const [isAdmin, setisAdmin] = useState(false);
+{
+  /* <Link to="/AdminPage_Top">관리자 화면</Link>
+        <br />
+        <Link to="/profile_manage">프로필 수정 화면</Link>
+        <br /> */
+}
