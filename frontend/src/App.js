@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import FindIdPw from "./components/FindIdPw";
 import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import ProfilePage_Top from "./components/ProfilePage_Top";
-//import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
-import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
+// import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
+// import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
 import SelectPage from "./components/SelectPage";
 import AdminPage_Top from "./components/AdminPage_Top";
 import PrivateRoute from "./routers/PrivateRoute";
@@ -30,14 +29,12 @@ export default function App() {
         <br />
         <Link to="/Grouppage">그룹페이지</Link>
         <br />
-        <Link to="/findIDPW">아이디비번찾기</Link>
-        <br />
         <Link to="/profile_top">프로필화면</Link>
         <br />
         <Link to="/AdminPage_Top">관리자 화면</Link>
         <br />
-        <Link to="/profile_manage">프로필 수정 화면</Link>
-        <br />
+        {/* <Link to="/profile_manage">프로필 수정 화면</Link>
+        <br /> */}
       </div>
       <div>
         <Switch>
@@ -47,13 +44,6 @@ export default function App() {
             component={LoginPage}
             isLogin={isLogin}
             path="/login"
-            exact
-          />
-          <PublicRoute
-            restricted
-            component={FindIdPw}
-            isLogin={isLogin}
-            path="/findIDPW"
             exact
           />
           <PrivateRoute
@@ -74,13 +64,12 @@ export default function App() {
             path="/profile_top"
             exact
           />
-
-          <PrivateRoute
+          {/* <PrivateRoute
             component={ProfilePage_Management}
             isLogin={isLogin}
             path="/profile_manage"
             exact
-          />
+          /> */}
           <AdminRoute
             component={AdminPage_Top}
             isAdmin={isAdmin}
