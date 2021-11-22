@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 // 프로필 화면은 자기꺼만 보여줘야함
 const customer = {
@@ -23,7 +24,15 @@ const OTTLogoImage = {
   WAVVE: "https://www.gcon.or.kr/fileDownload?titleId=9992&fileId=2",
 };
 
-class Profilepage_Top extends Component {
+const Profile = {
+  payment:
+    "https://ecommercenews.eu/wp-content/uploads/2013/06/most_common_payment_methods_in_europe.png",
+  management: "http://simpleicon.com/wp-content/uploads/pencil.png",
+  logout:
+    "https://cdn.icon-icons.com/icons2/2943/PNG/512/logout_icon_184025.png",
+};
+
+class ProfilePage_Top extends Component {
   render() {
     return (
       <div>
@@ -105,9 +114,102 @@ class Profilepage_Top extends Component {
             />
           </div>
         </div>
+        // 결제 창 부분
+        <div
+          style={{
+            display: "flex",
+            width: "auto",
+            height: "200px",
+            backgroundColor: "purple",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            to="/profile/payment"
+            style={{
+              textDecoration: "none",
+              marginLeft: "10px",
+              marginRight: "10px",
+            }}
+          >
+            <img
+              style={{
+                display: "block",
+                margin: "0 auto",
+                width: "300px",
+                height: "180px",
+              }}
+              src={Profile.payment}
+              alt="결제 관리 사진"
+            />
+          </Link>
+        </div>
+        // 프로필 수정 부분
+        <div
+          style={{
+            display: "flex",
+            width: "auto",
+            height: "200px",
+            backgroundColor: "gray",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            to="/profile/management"
+            style={{
+              textDecoration: "none",
+              marginLeft: "10px",
+              marginRight: "10px",
+            }}
+          >
+            <img
+              style={{
+                display: "block",
+                margin: "0 auto",
+                width: "150px",
+                height: "150px",
+              }}
+              src={Profile.management}
+              alt="프로필 수정"
+            />
+          </Link>
+        </div>
+        // 로그 아웃
+        <div
+          style={{
+            display: "flex",
+            width: "auto",
+            height: "200px",
+            backgroundColor: "green",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            to="/login"
+            style={{
+              textDecoration: "none",
+              marginLeft: "10px",
+              marginRight: "10px",
+            }}
+          >
+            <img
+              style={{
+                display: "block",
+                margin: "0 auto",
+                width: "150px",
+                height: "150px",
+              }}
+              src={Profile.logout}
+              alt="로그아웃"
+            />
+          </Link>
+        </div>
       </div>
     );
   }
 }
 
-export default Profilepage_Top;
+export default ProfilePage_Top;

@@ -1,51 +1,78 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import AttendPage from "./components/AttendPage";
-import FindIdPw from "./components/FindIdPw";
 import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import ProfilePage_Top from "./components/ProfilePage_Top";
-import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
-import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
 import SelectPage from "./components/SelectPage";
-import AdminPage_Top from "./components/AdminPage_Top";
+import PrivateRoute from "./routers/PrivateRoute";
+import PublicRoute from "./routers/PublicRoute";
+// import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
+// import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
+// import AdminPage_Top from "./components/AdminPage_Top";
+// import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
+  const [isLogin, setisLogin] = useState(false);
+  const [isAttend, setisAttend] = useState();
+
+  console.log(isLogin);
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
         레이아웃 구성확인용
         <br />
-        <Link to="/">홈</Link>
+        <Link to={{ pathname: "/", state: isLogin }}>홈</Link>
         <br />
         <Link to="/login">로그인</Link>
         <br />
         <Link to="/selectOTT">OTT선택</Link>
         <br />
-        <Link to="/attendGroup">그룹참가</Link>
+        <Link to="/Grouppage">그룹페이지</Link>
         <br />
-        <Link to="/groupPage">그룹페이지</Link>
-        <br />
-        <Link to="/findIDPW">아이디비번찾기</Link>
-        <br />
-        <Link to="/profile">프로필화면</Link>
-        <br />
-        <Link to="/admin">관리자 화면</Link>
+        <Link to="/profile_top">프로필화면</Link>
         <br />
       </div>
       <div>
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/selectOTT" component={SelectPage} />
-          <Route path="/attendGroup" component={AttendPage} />
-          <Route path="/groupPage" component={GroupPage} />
-          <Route path="/findIDPW" component={FindIdPw} />
-          <Route exact path="/profile/management" component={ProfilePage_Management} />
-          <Route exact path="/profile/payment" component={ProfilePage_Payment} />
-          <Route path="/profile" component={ProfilePage_Top} />
-          <Route path="/admin" component={AdminPage_Top} />
+          <PublicRoute
+            restricted
+            component={LoginPage}
+            isLogin={isLogin}
+            path="/login"
+            exact
+          />
+          <PrivateRoute
+            component={SelectPage}
+            isLogin={isLogin}
+            path="/selectOTT"
+            exact
+          />
+          <PrivateRoute
+            component={GroupPage}
+            isLogin={isLogin}
+            path="/Grouppage"
+            exact
+          />
+          <PrivateRoute
+            component={ProfilePage_Top}
+            isLogin={isLogin}
+            path="/profile_top"
+            exact
+          />
+          {/* <PrivateRoute
+            component={ProfilePage_Management}
+            isLogin={isLogin}
+            path="/profile_manage"
+            exact
+          /> */}
+          {/* <AdminRoute
+            component={AdminPage_Top}
+            isAdmin={isAdmin}
+            path="/AdminPage_Top"
+            exact
+          /> */}
         </Switch>
       </div>
     </BrowserRouter>
@@ -85,3 +112,10 @@ export default function App() {
 //         );
 //     }
 // }
+// const [isAdmin, setisAdmin] = useState(false);
+{
+  /* <Link to="/AdminPage_Top">관리자 화면</Link>
+        <br />
+        <Link to="/profile_manage">프로필 수정 화면</Link>
+        <br /> */
+}
