@@ -14,22 +14,6 @@ def generate_unique_code(): # code 생성 함수
     return code
 
 
-# class Users(models.Model):
-#     userID = models.CharField(max_length=50, default="", unique=True, verbose_name='사용자아이디') # verbose_name : admin에서 보이는 컬럼명
-#     password = models.CharField(max_length=20, default="", verbose_name='비밀번호')
-#     nickname = models.CharField(max_length=20, default="", verbose_name='닉네임')
-#     groupID = models.CharField(max_length=10, null=True, verbose_name='그룹번호')
-#     OTTname = models.CharField(max_length=15, null=True, verbose_name='OTT이름')
-#     phoneNum = models.CharField(max_length=11, verbose_name='전화번호')
-#     realName = models.CharField(max_length=20, verbose_name='실명')
-#     userCode = models.CharField(max_length=8, unique=True, verbose_name='유저코드')
-#     mailAddress = models.EmailField(max_length=100, verbose_name='사용자이메일')
-    
-#     def selectOTT():
-        
-#     def changeProfile():
-        
-
 class Group(models.Model):
     numOfUser = models.IntegerField(default=1, verbose_name='사용자수')
     groupID = models.CharField(max_length=8, unique=True, verbose_name='그룹번호')
@@ -40,3 +24,5 @@ class Group(models.Model):
     user2code = models.CharField(max_length=50, unique=True, null=True, verbose_name='user2 코드')
     user3code = models.CharField(max_length=50, unique=True, null=True, verbose_name='user3 코드')
     user4code = models.CharField(max_length=50, unique=True, null=True, verbose_name='user4 코드')
+
+
