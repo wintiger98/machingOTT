@@ -13,7 +13,10 @@ def signup(request):
             form.save()
             userID = form.cleaned_data.get('userID')
             raw_password = form.cleaned_data.get('password1')
-            user = authenticate(userID=userID, password=raw_password)  # 사용자 인증
+            email = form.cleaned_data.get('email')
+            phonenum = form.cleaned_data.get('phonenum')
+            realname = form.cleaned_data.get('realname')
+            user = authenticate(userID=userID, password=raw_password, email=email,phonenum=phonenum, realname=realname)  # 사용자 인증
             login(request, user)  # 로그인
             return redirect('index')
     else:
