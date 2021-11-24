@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
-    'pybo.apps.PyboConfig',
     'common.apps.CommonConfig',
+    'pybo.apps.PyboConfig',
     'rest_framework',
     'corsheaders',
 ]
@@ -92,6 +92,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+AUTH_USER_MODEL = 'common.User'
 
 
 # Password validation
