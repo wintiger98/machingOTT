@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'common.apps.CommonConfig',
+    'account',
     'pybo.apps.PyboConfig',
     'rest_framework',
     'corsheaders',
