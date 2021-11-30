@@ -1,9 +1,8 @@
-import React, { Component, useState, useEffect } from "react";
-import Header from "./Header";
-import LoginForm from "./LoginComponent/LoginForm";
-import LoginSuccess from "./LoginComponent/LoginSuccess";
+import React, { useState } from "react";
+import LoginForm from "./LoginForm";
+import LoginSuccess from "./LoginSuccess";
 
-const LoginPage = () => {
+const Form = () => {
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
 
   const submitForm = () => {
@@ -11,7 +10,7 @@ const LoginPage = () => {
   };
   return (
     <div>
-      <Header />{" "}
+      {" "}
       {!formIsSubmitted ? (
         <LoginForm submitForm={submitForm} />
       ) : (
@@ -21,4 +20,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Form;

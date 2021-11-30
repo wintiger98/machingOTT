@@ -7,6 +7,7 @@ import ProfilePage_Top from "./components/ProfilePage_Top";
 import SelectPage from "./components/SelectPage";
 import PrivateRoute from "./routers/PrivateRoute";
 import PublicRoute from "./routers/PublicRoute";
+import Signup from "./components/Signup";
 // import ProfilePage_Payment from "./components/ProfileComponents/ProfilePage_Payment";
 // import ProfilePage_Management from "./components/ProfileComponents/ProfilePage_Management";
 // import AdminPage_Top from "./components/AdminPage_Top";
@@ -31,6 +32,8 @@ export default function App() {
         <Link to="/Grouppage">그룹페이지</Link>
         <br />
         <Link to="/profile_top">프로필화면</Link>
+        <br />
+        <Link to="/signup">회원가입</Link>
         <br />
       </div>
       <div>
@@ -59,6 +62,12 @@ export default function App() {
             component={ProfilePage_Top}
             isLogin={isLogin}
             path="/profile_top"
+            exact
+          />
+          <PrivateRoute
+            component={Signup}
+            isLogin={isLogin}
+            path="/signup"
             exact
           />
           {/* <PrivateRoute
