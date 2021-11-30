@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import surf from "./MainPage.jpg";
 
 export default function MainPage(props) {
   const [isLogin, setisLogin] = useState(false);
@@ -21,10 +22,17 @@ export default function MainPage(props) {
           alignItems: "center",
           width: "auto",
           height: "100vh",
-          backgroundColor: "grey",
+          backgroundColor: "white",
         }}
       >
-        이미지 넣을 곳
+        <div className="app-wrapper">
+          <img src={surf} className="MainPage" alt="MainPage" />
+          <form className="form-wrapper">
+            <button className="submit" a href="/Signup">
+              시작하기
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

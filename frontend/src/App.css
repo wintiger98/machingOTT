@@ -53,7 +53,11 @@
   margin: 0;
   padding: 0;
 }
-
+.MainPage {
+  width: auto;
+  height: 450px;
+  overflow: hidden;
+}
 .container {
   background: linear-gradient(135deg, #fff, #a8d4ee);
   width: 100%;
