@@ -160,7 +160,7 @@ export default function Header({ LoginState, AttendState }) {
             </a>
           ) : (
             <a
-              href="/login"
+              href="/signup"
               style={{
                 fontFamily: "GmarketSansLight",
                 fontSize: "18px",

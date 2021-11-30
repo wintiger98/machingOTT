@@ -1,9 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import Header from "./Header";
-import LoginForm from "./LoginComponent/LoginForm";
-import LoginSuccess from "./LoginComponent/LoginSuccess";
+import SignupForm from "./Signupcomponent/SignupForm";
+import SignupSuccess from "./Signupcomponent/SignupSuccess";
 
-const LoginPage = () => {
+const Signup = () => {
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
 
   const submitForm = () => {
@@ -13,12 +13,12 @@ const LoginPage = () => {
     <div>
       <Header />{" "}
       {!formIsSubmitted ? (
-        <LoginForm submitForm={submitForm} />
+        <SignupForm submitForm={submitForm} />
       ) : (
-        <LoginSuccess />
+        <SignupSuccess />
       )}{" "}
     </div>
   );
 };
 
-export default LoginPage;
+export default Signup;
