@@ -14,7 +14,7 @@ import Signup from "./components/Signup";
 // import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
-  const [isLogin, setisLogin] = useState(false);
+  const [isActive, setisActive] = useState(false);
   const [isAttend, setisAttend] = useState();
 
   console.log(isLogin);
@@ -23,7 +23,7 @@ export default function App() {
       <div style={{ padding: 20, border: "5px solid gray" }}>
         레이아웃 구성확인용
         <br />
-        <Link to={{ pathname: "/", state: isLogin }}>홈</Link>
+        <Link to={{ pathname: "/", state: isActive }}>홈</Link>
         <br />
         <Link to="/login">로그인</Link>
         <br />
@@ -42,31 +42,31 @@ export default function App() {
           <PublicRoute
             restricted
             component={LoginPage}
-            isLogin={isLogin}
+            isActive={isActive}
             path="/login"
             exact
           />
           <PrivateRoute
             component={SelectPage}
-            isLogin={isLogin}
+            isActive={isActive}
             path="/selectOTT"
             exact
           />
           <PrivateRoute
             component={GroupPage}
-            isLogin={isLogin}
+            isActive={isActive}
             path="/Grouppage"
             exact
           />
           <PrivateRoute
             component={ProfilePage_Top}
-            isLogin={isLogin}
+            isActive={isActive}
             path="/profile_top"
             exact
           />
           <PrivateRoute
             component={Signup}
-            isLogin={isLogin}
+            isActive={true}
             path="/signup"
             exact
           />

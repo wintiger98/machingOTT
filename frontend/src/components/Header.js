@@ -5,12 +5,12 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Font.css";
 
 export default function Header({ LoginState, AttendState }) {
-  const [isLogin, setisLogin] = useState(false);
+  const [isActive, setisActive] = useState(false);
   const [isAttend, setisAttend] = useState(false);
 
   console.log(LoginState);
   useEffect(() => {
-    setisLogin(LoginState);
+    setisActive(LoginState);
   }, [LoginState]);
 
   console.log(AttendState);
@@ -115,7 +115,7 @@ export default function Header({ LoginState, AttendState }) {
             alignItems: "center",
           }}
         >
-          {isLogin ? (
+          {isActive ? (
             <a
               href="/"
               style={{
@@ -145,7 +145,7 @@ export default function Header({ LoginState, AttendState }) {
             </a>
           )}
 
-          {isLogin ? (
+          {isActive ? (
             <a
               href="/profile"
               style={{

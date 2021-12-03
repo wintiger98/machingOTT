@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 
 export default function MainPage(props) {
-  const [isLogin, setisLogin] = useState(false);
+  const [isActive, setisActive] = useState(false);
   const [isAttend, setisAttend] = useState(false);
 
   console.log(props.location.state);
   useEffect(() => {
-    setisLogin(props.location.state);
+    setisActive(props.location.state);
   }, [props.location.state]);
 
   return (
     <div>
-      <Header LoginState={isLogin} AttendState={isAttend} />
+      <Header LoginState={isActive} AttendState={isAttend} />
       <div
         style={{
           display: "flex",
