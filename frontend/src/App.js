@@ -14,16 +14,16 @@ import Signup from "./components/Signup";
 // import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
-  const [isLogin, setisLogin] = useState(false);
+  const [is_active, setis_active] = useState(true);
   const [isAttend, setisAttend] = useState();
 
-  console.log(isLogin);
+  console.log(is_active);
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
         레이아웃 구성확인용
         <br />
-        <Link to={{ pathname: "/", state: isLogin }}>홈</Link>
+        <Link to={{ pathname: "/", state: is_active }}>홈</Link>
         <br />
         <Link to="/login">로그인</Link>
         <br />
@@ -42,31 +42,31 @@ export default function App() {
           <PublicRoute
             restricted
             component={LoginPage}
-            isLogin={isLogin}
+            is_active={is_active}
             path="/login"
             exact
           />
           <PrivateRoute
             component={SelectPage}
-            isLogin={isLogin}
+            is_active={is_active}
             path="/selectOTT"
             exact
           />
           <PrivateRoute
             component={GroupPage}
-            isLogin={isLogin}
+            is_active={is_active}
             path="/Grouppage"
             exact
           />
           <PrivateRoute
             component={ProfilePage_Top}
-            isLogin={isLogin}
+            is_active={is_active}
             path="/profile_top"
             exact
           />
           <PrivateRoute
             component={Signup}
-            isLogin={isLogin}
+            is_active={true}
             path="/signup"
             exact
           />

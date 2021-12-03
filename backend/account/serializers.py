@@ -1,6 +1,8 @@
 from .models import User
 from rest_framework import serializers
+from django import forms
 
+# 유저
 class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(
@@ -14,4 +16,10 @@ class UserSerializer(serializers.ModelSerializer):
         return user
     class Meta:
         model = User
-        fields = ['userID','password','email','realname','nickname', 'phoneNum'] 
+        fields = ['userID','password','email','realname','nickname', 'phoneNum']
+
+# 프로필
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fiels = ('userID','email','nickname','realname', 'groupID','OTTname','phoneNum')

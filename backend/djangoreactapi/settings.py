@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
-    'common.apps.CommonConfig',
-    'account',
-    'pybo.apps.PyboConfig',
+    #'common.apps.CommonConfig',
+    'account.apps.AccountConfig',
+    #'pybo.apps.PyboConfig',
     'rest_framework',
     'corsheaders',
 ]
@@ -65,10 +66,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'djangoreactapi.urls'
 
+
+TEMPLATE_DIR = os.path.join(BASE_DIR.parent, 'frontend')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,7 +98,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'common.User'
+AUTH_USER_MODEL = 'account.User'
 
 
 # Password validation
