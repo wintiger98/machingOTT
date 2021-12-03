@@ -35,6 +35,7 @@ const SignupForm = ({ submitForm }) => {
       });
     setErrors(validation(values));
     setDataIsCorret(true);
+    window.location.replace("/");
   };
 
   useEffect(() => {
