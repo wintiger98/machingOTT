@@ -26,24 +26,29 @@ class UserManager(BaseUserManager):
         return user
 
     # 관리자 user 생성
-    def create_superuser(self, userID, password=None):
-        user = self.create_user(
-            userID=userID,
-            password = password,
+    def create_superuser(self, userID, password):
+        user = self.model(
+            userID = userID,
+            password=password,
         )
         user.is_admin = True
+        user.set_password(password)
         user.save(using=self._db)
         return user
 
 class User(AbstractBaseUser):
-    userID = models.CharField(default='', max_length=100, null=False, blank=False, verbose_name="ID")
-    email = models.EmailField(default='', max_length=100, null=False, blank=False, unique=True, verbose_name="이메일 주소")
-    nickname = models.CharField(default='', max_length=100, null=False, blank=False, unique=True, verbose_name="사용자 별명")
-    realname = models.CharField(default='', max_length=100, null=False, blank=False, verbose_name="이름(실명)")
+    userID = models.CharField(max_length=20, unique=True, null=False, default="", verbose_name='ID')
+    email = models.EmailField(
+        verbose_name='이메일 주소',
+        max_length=255,
+        unique=True,
+    )
+    nickname = models.CharField(default='', max_length=100, null=True, blank=False, unique=True, verbose_name="사용자 별명")
+    realname = models.CharField(default='', max_length=100, null=True, blank=False, verbose_name="이름(실명)")
     
-    groupID = models.CharField(max_length=20, null=False, default="아직 그룹에 참가하지 않았습니다.", verbose_name='그룹 아이디')
-    OTTname = models.CharField(max_length=20, null=False, default="아직 OTT를 선택하지 않았습니다.", verbose_name='OTT 이름')
-    phoneNum = models.CharField(max_length=11, null=False, default="휴대폰 번호를 입력해주세요. (- 제외)", verbose_name='휴대폰 번호')
+    groupID = models.CharField(max_length=20, null=True, default="아직 그룹에 참가하지 않았습니다.", verbose_name='그룹 아이디')
+    OTTname = models.CharField(max_length=20, null=True, default="아직 OTT를 선택하지 않았습니다.", verbose_name='OTT 이름')
+    phoneNum = models.CharField(max_length=11, null=True, default="휴대폰 번호를 입력해주세요. (- 제외)", verbose_name='휴대폰 번호')
 
     # User 모델의 필수 field
     is_active = models.BooleanField(default=True)    
@@ -55,7 +60,19 @@ class User(AbstractBaseUser):
     # 사용자의 username field는 userID으로 설정
     USERNAME_FIELD = 'userID'
     # 필수로 작성해야하는 field
-    REQUIRED_FIELDS = ['email', 'phoneNum', 'realname']
+    #REQUIRED_FIELDS = ['email', 'phoneNum', 'realname']
 
     def __str__(self):
         return self.userID
+
+    def has_perm(self, perm, obj=None):
+        return True
+    
+    def has_module_perms(self, app_label):
+        return True
+    
+    @property
+    def is_staff(self):
+        return self.is_admin
+    # User 모델의 필수 field
+    # userID,email,nickname,realname, groupID,OTTname,phoneNum,is_active,is_admin,

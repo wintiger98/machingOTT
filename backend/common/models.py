@@ -66,8 +66,6 @@ class User(AbstractBaseUser):
     is_laftel = models.BooleanField(default=False, verbose_name='라프텔')
     is_tving = models.BooleanField(default=False, verbose_name='티빙')
 
-    
-            
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False, verbose_name='관리자 권한')
     is_Login = models.BooleanField(default=False, verbose_name='로그인 상태')
@@ -80,7 +78,7 @@ class User(AbstractBaseUser):
     # REQUIRED_FIELDS = ['date_of_birth']
 
     def __str__(self):
-        return self.email
+        return self.userID
 
     def has_perm(self, perm, obj=None):
         return True
