@@ -28,21 +28,39 @@ export default function MainPage(props) {
         <div className="app-wrapper">
           <img src={surf} className="MainPage" alt="MainPage" />
           <form className="form-wrapper">
-            <button className="submit">
-              {" "}
-              <a
-                href="/login"
-                style={{
-                  fontFamily: "GmarketSansLight",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
-                시작하기
-              </a>
-            </button>
+            {isLogin ? (
+              <button className="submit">
+                {" "}
+                <a
+                  href="/login"
+                  style={{
+                    fontFamily: "GmarketSansLight",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                >
+                  시작하기
+                </a>
+              </button>
+            ) : (
+              <button className="submit">
+                {" "}
+                <a
+                  href="/selectOTT"
+                  style={{
+                    fontFamily: "GmarketSansLight",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                >
+                  시작하기
+                </a>
+              </button>
+            )}
           </form>
         </div>
       </div>

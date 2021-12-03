@@ -147,7 +147,7 @@ export default function Header({ LoginState, AttendState }) {
 
           {isActive ? (
             <a
-              href="/profile"
+              href="/profile_top"
               style={{
                 fontFamily: "GmarketSansLight",
                 fontSize: "18px",

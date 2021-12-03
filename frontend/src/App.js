@@ -14,7 +14,7 @@ import Signup from "./components/Signup";
 // import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
-  const [is_active, setis_active] = useState(false);
+  const [is_active, setis_active] = useState(true);
   const [isAttend, setisAttend] = useState();
 
   console.log(is_active);

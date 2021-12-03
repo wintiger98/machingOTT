@@ -26,8 +26,10 @@ const LoginForm = ({ submitForm }) => {
       .then(function (res) {
         console.log(res);
       });
+    localStorage.setItem("name", values.ID);
     setErrors(validation(values));
     setDataIsCorret(true);
+    window.location.replace("/");
   };
 
   useEffect(() => {
