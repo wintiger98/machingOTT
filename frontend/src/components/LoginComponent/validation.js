@@ -7,8 +7,8 @@ const validation = (values) => {
 
   if (!values.password) {
     errors.password = "password is required";
-  } else if (values.password.length < 5) {
-    errors.password = "password must be more than five characters";
+  } else if (values.password.length < 3) {
+    errors.password = "password must be more than three characters";
   }
 
   return errors;

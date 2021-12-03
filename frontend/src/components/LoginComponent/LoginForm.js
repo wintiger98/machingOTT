@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import validation from "./validation";
+import axios from "axios";
 
 const LoginForm = ({ submitForm }) => {
   const [values, setValues] = useState({
@@ -17,6 +18,14 @@ const LoginForm = ({ submitForm }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    axios
+      .post("http://localhost:8000/account/login/", {
+        userID: values.ID,
+        password: values.password,
+      })
+      .then(function (res) {
+        console.log(res);
+      });
     setErrors(validation(values));
     setDataIsCorret(true);
   };
