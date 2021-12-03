@@ -14,10 +14,10 @@ import Signup from "./components/Signup";
 // import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
-  const [isActive, setisActive] = useState(false);
+  const [isActive, setisActive] = useState(true);
   const [isAttend, setisAttend] = useState();
 
-  console.log(isLogin);
+  console.log(isActive);
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
