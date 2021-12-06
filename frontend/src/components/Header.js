@@ -5,25 +5,47 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Font.css";
 
 export default function Header({ LoginState, AttendState }) {
-  const [isActive, setisActive] = useState(false);
+  const [isActive, setisActive] = useState(
+    () => JSON.parse(localStorage.getItem("name")) || 0
+  );
   const [isAttend, setisAttend] = useState(false);
+  var checkUser = localStorage.getItem("name");
+  console.log(isActive);
 
-  console.log(LoginState);
-  useEffect(() => {
-    setisActive(LoginState);
-  }, [LoginState]);
-
-  console.log(AttendState);
   useEffect(() => {
     setisAttend(AttendState);
   }, [AttendState]);
+
+  useEffect(() => {
+    if (checkUser != null) {
+      setisActive(true);
+      //console.log(isActive);
+    } else {
+      setisActive(false);
+      //console.log(isActive);
+    }
+    return () => {
+      //console.log("현재 페이지에서 벗어남");
+    };
+  });
+
+  const handleFormLogout = (event) => {
+    event.preventDefault();
+    localStorage.removeItem("name");
+    window.location.replace("/");
+  };
+
+  const handleFormProfile = (event) => {
+    event.preventDefault();
+    window.location.replace("/profile_top");
+  };
 
   return (
     <div style={{ width: "100%", margin: "0" }}>
       {/*header*/}
 
       <div
-        class="header"
+        className="header"
         style={{
           width: "85%",
           display: "flex",
@@ -32,7 +54,7 @@ export default function Header({ LoginState, AttendState }) {
           alignItems: "center",
         }}
       >
-        <div class="header_logo">
+        <div className="header_logo">
           {/*}UOMS logo, go to main page*/}
           <a
             href="/"
@@ -51,7 +73,7 @@ export default function Header({ LoginState, AttendState }) {
         {/* menu choice */}
 
         <div
-          class="header_menu"
+          className="header_menu"
           style={{
             justifyContent: "center",
             display: "block",
@@ -107,7 +129,7 @@ export default function Header({ LoginState, AttendState }) {
 
         {/*profile logo, go to profile page*/}
         <div
-          class="header_login"
+          className="header_login"
           style={{
             justifyContent: "center",
             display: "block",
@@ -126,6 +148,7 @@ export default function Header({ LoginState, AttendState }) {
                 textDecoration: "none",
                 color: "black",
               }}
+              onClick={handleFormLogout}
             >
               로그아웃
             </a>
@@ -155,6 +178,7 @@ export default function Header({ LoginState, AttendState }) {
                 textDecoration: "none",
                 color: "black",
               }}
+              onClick={handleFormProfile}
             >
               프로필
             </a>

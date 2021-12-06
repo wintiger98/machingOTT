@@ -26,7 +26,7 @@ const LoginForm = ({ submitForm }) => {
       .then(function (res) {
         console.log(res);
       });
-    localStorage.setItem("name", values.ID);
+    localStorage.setItem("name", JSON.stringify(values.ID));
     setErrors(validation(values));
     setDataIsCorret(true);
     window.location.replace("/");

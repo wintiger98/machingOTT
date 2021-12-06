@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import GroupPage from "./components/GroupPage";
 import LoginPage from "./components/LoginPage";
@@ -14,10 +14,25 @@ import Signup from "./components/Signup";
 // import AdminRoute from "./routers/AdminRoute";
 
 export default function App() {
-  const [is_active, setis_active] = useState(true);
+  const [is_active, setis_active] = useState(
+    () => JSON.parse(localStorage.getItem("name")) || 0
+  );
   const [isAttend, setisAttend] = useState();
-
+  var checkUser = localStorage.getItem("name");
   console.log(is_active);
+
+  useEffect(() => {
+    if (checkUser != null) {
+      setis_active(true);
+    } else {
+      setis_active(false);
+    }
+    return () => {
+      //console.log(is_active);
+      //console.log("현재 페이지에서 벗어남");
+    };
+  });
+
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
@@ -66,65 +81,12 @@ export default function App() {
           />
           <PrivateRoute
             component={Signup}
-            is_active={true}
+            is_active={!is_active}
             path="/signup"
             exact
           />
-          {/* <PrivateRoute
-            component={ProfilePage_Management}
-            isLogin={isLogin}
-            path="/profile_manage"
-            exact
-          /> */}
-          {/* <AdminRoute
-            component={AdminPage_Top}
-            isAdmin={isAdmin}
-            path="/AdminPage_Top"
-            exact
-          /> */}
         </Switch>
       </div>
     </BrowserRouter>
   );
-}
-
-// 옛날 테스트 내용
-// import React, { Component } from 'react';
-
-// class App extends Component {
-//     state = {
-//         posts: []
-//     };
-
-//     async componentDidMount() {
-//         try {
-//             const res = await fetch('http://127.0.0.1:8000/api/');
-//             const posts = await res.json();
-//             this.setState({
-//                 posts
-//             });
-//         } catch (e) {
-//             console.log(e);
-//         }
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 {this.state.posts.map(item => (
-//                     <div key={item.id}>
-//                         <h1>{item.title}</h1>
-//                         <span>{item.content}</span>
-//                     </div>
-//                 ))}
-//             </div>
-//         );
-//     }
-// }
-// const [isAdmin, setisAdmin] = useState(false);
-{
-  /* <Link to="/AdminPage_Top">관리자 화면</Link>
-        <br />
-        <Link to="/profile_manage">프로필 수정 화면</Link>
-        <br /> */
 }
