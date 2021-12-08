@@ -28,7 +28,6 @@ const SignupForm = ({ submitForm }) => {
         realname: values.fullname,
         nickname: values.nickname,
         password: values.password,
-        phoneNum: "000-0000-0000",
       })
       .then(function (res) {
         console.log(res);
