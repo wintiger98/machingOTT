@@ -1,7 +1,7 @@
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 from rest_framework import generics, permissions, status
-from .serializers import GroupSerializer
+from .serializers import GroupSerializer, SelectOTTSerializer
 from .models import Group
 from account.models import User
 from rest_framework.views import APIView
@@ -31,8 +31,22 @@ class DetailGroupView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-def selectOTT(request):
-    myid, myott = request.data
+class selectOTT(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    queryset = User.objects.all()
+    serializer_class = SelectOTTSerializer
+
+    def post(self, request, format=None):
+        print("냐",request.data)
+        serializer = SelectOTTSerializer(data=request.data)
+        print("옹",serializer)
+        if serializer.is_valid():
+            #serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
     
 
 

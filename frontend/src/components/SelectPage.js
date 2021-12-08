@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import axios from "axios";
 
 export default function SelectPage() {
   const [username, setUsername] = useState("");
@@ -20,10 +21,22 @@ export default function SelectPage() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
     localStorage.setItem("OTT", JSON.stringify(OTTname));
-    window.location.replace("/Grouppage");
+    setUsername(localStorage.getItem("name"));
+    console.log(typeof username);
+    axios
+    .post("http://localhost:8000/api/select/", {
+      userID:username,
+      OTTname:OTTname
+    })
+    .then(function (res) {
+      console.log(res);
+    });
+
+    // window.location.replace("/Grouppage");
   };
+
+
 
   return (
     <div>

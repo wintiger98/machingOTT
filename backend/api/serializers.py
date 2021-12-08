@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Group
+from account.models import User
+
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,4 +11,4 @@ class GroupSerializer(serializers.ModelSerializer):
 class SelectOTTSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['userID','password','email','realname','nickname', 'OTTname','groupID']
+        fields = ['userID', 'OTTname']
