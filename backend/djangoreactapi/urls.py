@@ -20,8 +20,5 @@ from account import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    #path('common/', include('common.urls')),
-    #path('pybo/', include('pybo.urls')),
     path('account/', include('account.urls')),
-    path('', views.ProfileUpdateAPI, name='index'),
 ]

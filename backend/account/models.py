@@ -3,13 +3,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class UserManager(BaseUserManager):
     # 일반 user 생성
-    def create_user(self, userID, email, realname, nickname, phoneNum, password=None):
+    def create_user(self, userID, email, realname, nickname, password=None):
         if not userID:
             raise ValueError('must have userID')
         if not email:
             raise ValueError('must have user email')
-        if not phoneNum:
-            raise ValueError('must have user phoneNum')
         if not realname:
             raise ValueError('must have user realname')
         if not nickname:
@@ -17,7 +15,6 @@ class UserManager(BaseUserManager):
         user = self.model(
             userID = userID,
             email = self.normalize_email(email),
-            phoneNum = phoneNum,
             realname = realname,
             nickname = nickname
         )
@@ -48,7 +45,6 @@ class User(AbstractBaseUser):
     
     groupID = models.CharField(max_length=20, null=True, default="아직 그룹에 참가하지 않았습니다.", verbose_name='그룹 아이디')
     OTTname = models.CharField(max_length=20, null=True, default="아직 OTT를 선택하지 않았습니다.", verbose_name='OTT 이름')
-    phoneNum = models.CharField(max_length=11, null=True, default="휴대폰 번호를 입력해주세요. (- 제외)", verbose_name='휴대폰 번호')
 
     # User 모델의 필수 field
     is_active = models.BooleanField(default=True)    
@@ -60,7 +56,7 @@ class User(AbstractBaseUser):
     # 사용자의 username field는 userID으로 설정
     USERNAME_FIELD = 'userID'
     # 필수로 작성해야하는 field
-    #REQUIRED_FIELDS = ['email', 'phoneNum', 'realname']
+    #REQUIRED_FIELDS = ['email', '', 'realname']
 
     def __str__(self):
         return self.userID
