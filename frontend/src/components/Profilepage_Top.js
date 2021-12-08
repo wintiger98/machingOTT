@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import validation from "./LoginComponent/validation";
+import Header from "./Header";
 
 // 프로필 화면은 자기꺼만 보여줘야함
 const customer = {
@@ -32,180 +35,129 @@ const Profile = {
     "https://cdn.icon-icons.com/icons2/2943/PNG/512/logout_icon_184025.png",
 };
 
+// 이름 설정
+var name = localStorage.getItem("name")
+  ? localStorage.getItem("name")
+  : "NO_NAMED";
+if (name != null) {
+  name = name.substring(1, name.length - 1);
+}
+
 class ProfilePage_Top extends Component {
   render() {
+    const handleFormLogout = (event) => {
+      event.preventDefault();
+      localStorage.removeItem("name");
+      window.location.replace("/");
+    };
+
     return (
       <div>
-        // 헤더 부분
-        <div
-          style={{
-            width: "auto",
-            height: "100px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "coral",
-          }}
-        >
-          <div>
-            <h1>현재 사용중인 OTT</h1>
-          </div>
-          <div>
-            {customer.OTTName === "NETFLIX" ? (
-              <img
-                style={{ display: "inline-block" }}
-                width={400 / 3}
-                height={300 / 3}
-                src={OTTLogoImage.NETFLIX}
-                alt="NETFLIX Logo Image"
-              />
-            ) : customer.OTTName === "WATCHA" ? (
-              <img
-                style={{ display: "inline-block" }}
-                width={233}
-                height={300 / 3}
-                src={OTTLogoImage.WATCHA}
-                alt="WATCHA Logo Image"
-              />
-            ) : customer.OTTName === "WAVVE" ? (
-              <img
-                style={{ display: "inline-block" }}
-                width={350}
-                height={300 / 3}
-                src={OTTLogoImage.WAVVE}
-                alt="WAVVE Logo Image"
-              />
-            ) : (
-              <h2> OTT를 사용하고 계시지 않습니다.</h2>
-            )}
-          </div>
-        </div>
-        // 프로필 부분
-        <div
-          style={{
-            display: "flex",
-            width: "auto",
-            height: "200px",
-            backgroundColor: "burlywood",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              flex: "1",
-              backgroundColor: "red",
-            }}
-          >
-            <div>
-              <img
-                style={{ display: "block", margin: "0 auto" }}
-                src={customer.profileImage}
-                alt="프로필 사진"
-              />
+        <Header LoginState={true} AttendState={true} />
+        <div className="container">
+          <div className="profile-wrapper">
+            <div
+              className="profile-top"
+              style={{
+                width: "600px",
+                height: "100px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <div
+                className="title"
+                style={{
+                  paddingLeft: "20px",
+                }}
+              >
+                <h2>현재 사용중인 OTT</h2>
+              </div>
+              <div>
+                {customer.OTTName === "NETFLIX" ? (
+                  <img
+                    style={{ display: "inline-block" }}
+                    width={400 / 3}
+                    height={300 / 3}
+                    src={OTTLogoImage.NETFLIX}
+                    alt="NETFLIX Logo Image"
+                  />
+                ) : customer.OTTName === "WATCHA" ? (
+                  <img
+                    style={{ display: "inline-block" }}
+                    width="80%"
+                    height="auto"
+                    src={OTTLogoImage.WATCHA}
+                    alt="WATCHA Logo Image"
+                  />
+                ) : customer.OTTName === "WAVVE" ? (
+                  <img
+                    style={{ display: "inline-block" }}
+                    width={350}
+                    height={300 / 3}
+                    src={OTTLogoImage.WAVVE}
+                    alt="WAVVE Logo Image"
+                  />
+                ) : (
+                  <h2> OTT를 사용하고 계시지 않습니다.</h2>
+                )}
+              </div>
+            </div>
+            {/*// 프로필 부분*/}
+            <div
+              className="profile-main"
+              style={{
+                display: "flex",
+                width: "600px",
+                height: "200px",
+
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  flex: "1",
+                }}
+              >
+                <div>
+                  <img
+                    style={{ display: "block", margin: "0 auto" }}
+                    src={customer.profileImage}
+                    alt="프로필 사진"
+                  />
+                </div>
+              </div>
+
+              <div className="profile-name" style={{ flex: "1" }}>
+                {name}
+              </div>
+            </div>
+            {/*// 로그 아웃*/}
+            <div
+              style={{
+                padding: "40px 0px 0px 0px",
+              }}
+            >
+              <button className="submit">
+                {" "}
+                <a
+                  href="/"
+                  style={{
+                    fontFamily: "GmarketSansLight",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                  onClick={handleFormLogout}
+                >
+                  로그아웃
+                </a>
+              </button>
             </div>
           </div>
-
-          <div style={{ flex: "1", backgroundColor: "yellow" }}>
-            <img
-              style={{ display: "block", margin: "0 auto" }}
-              src={customer.profileImage}
-              alt="프로필 사진"
-            />
-          </div>
-        </div>
-        // 결제 창 부분
-        <div
-          style={{
-            display: "flex",
-            width: "auto",
-            height: "200px",
-            backgroundColor: "purple",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Link
-            to="/profile/payment"
-            style={{
-              textDecoration: "none",
-              marginLeft: "10px",
-              marginRight: "10px",
-            }}
-          >
-            <img
-              style={{
-                display: "block",
-                margin: "0 auto",
-                width: "300px",
-                height: "180px",
-              }}
-              src={Profile.payment}
-              alt="결제 관리 사진"
-            />
-          </Link>
-        </div>
-        // 프로필 수정 부분
-        <div
-          style={{
-            display: "flex",
-            width: "auto",
-            height: "200px",
-            backgroundColor: "gray",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Link
-            to="/profile/management"
-            style={{
-              textDecoration: "none",
-              marginLeft: "10px",
-              marginRight: "10px",
-            }}
-          >
-            <img
-              style={{
-                display: "block",
-                margin: "0 auto",
-                width: "150px",
-                height: "150px",
-              }}
-              src={Profile.management}
-              alt="프로필 수정"
-            />
-          </Link>
-        </div>
-        // 로그 아웃
-        <div
-          style={{
-            display: "flex",
-            width: "auto",
-            height: "200px",
-            backgroundColor: "green",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Link
-            to="/login"
-            style={{
-              textDecoration: "none",
-              marginLeft: "10px",
-              marginRight: "10px",
-            }}
-          >
-            <img
-              style={{
-                display: "block",
-                margin: "0 auto",
-                width: "150px",
-                height: "150px",
-              }}
-              src={Profile.logout}
-              alt="로그아웃"
-            />
-          </Link>
         </div>
       </div>
     );

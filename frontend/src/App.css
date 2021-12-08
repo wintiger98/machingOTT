@@ -40,6 +40,11 @@
     format("woff");
 }
 
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -76,6 +81,54 @@
   border-radius: 5px;
 }
 
+.ott-wrapper {
+  background-color: #fff;
+  min-width: 650px;
+  min-height: 650px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.profile-wrapper {
+  background-color: #fff;
+  min-width: 400px;
+  min-height: 550px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.group-wrapper {
+  background-color: #fff;
+  min-width: 650px;
+  min-height: 700px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.ott {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  height: 300px;
+  box-shadow: 1px 1px 5px 1px gray;
+}
+
+.profile-main,
+.profile-top {
+  box-shadow: 1px 1px 5px 1px gray;
+}
+.ott-ul {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 0;
+  list-style: none;
+}
+.ott-title,
 .title {
   font-family: "yg-jalnan";
   color: blue;
@@ -83,6 +136,29 @@
   margin: 80px 0px 40px 0px;
 }
 
+.ott-td:hover {
+  background-color: #d3e5ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.table-main {
+  width: 80%;
+  height: 550px;
+  margin: 0 auto;
+  text-align: center;
+  border-spacing: 0;
+  box-shadow: 1px 1px 5px 1px gray;
+}
+
+.ott-table {
+  width: 400px;
+  text-align: center;
+  border-spacing: 0;
+}
+.table-row {
+  color: blue;
+  font-family: "GmarketSansMedium";
+}
 .name,
 .ID,
 .nickname,
@@ -92,6 +168,20 @@
   margin: 20px;
   color: #969292;
   font-size: 16px;
+}
+
+.profile-name {
+  font-family: "GmarketSansMedium";
+  padding-left: 170px;
+  margin: 20px;
+  color: #006eff;
+  font-size: 40px;
+}
+
+.ott-name {
+  font-family: "GmarketSansMedium";
+  font-size: 5px;
+  color: black;
 }
 
 .password {

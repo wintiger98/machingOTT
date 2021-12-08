@@ -25,128 +25,130 @@ export default function SelectPage() {
       {/* 상단바 끝 */}
 
       {/* 본문 시작 */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ height: "50px" }}></div>
-        <div style={{ display: "flex" }}>
-          <div style={{ flexBasis: "30%", flexShrink: "0" }}></div>
-          <div style={{ flexBasis: "40%", padding: "10px" }}>
-            <div
+      <div className="container">
+        <div className="ott-wrapper">
+          <div className="ott-title">
+            <h2>보고싶은 OTT를 선택해주세요</h2>
+          </div>
+          <div className="ott">
+            <table
+              className="ott-table"
               style={{
-                width: "auto",
-                height: "6vh",
-                backgroundColor: "#ffecee",
-                marginBottom: "10px",
+                borderCollapse: "separate",
+                borderSpacing: "20px",
               }}
             >
-              생성되어있는 그룹 수(띄워주기)
-            </div>
-            <div
+              <tbody>
+                <tr className="ott-name">
+                  <td rowSpan="1" className="ott-td">
+                    {" "}
+                    <img
+                      style={{
+                        display: "inline-block",
+                        width: "100px",
+                        height: "10vh",
+                      }}
+                      src={OTTLogoImage.NETFLIX}
+                      alt="NETFLIX Logo Image"
+                      onClick={function () {
+                        setOTTname("NETFLIX");
+                        console.log(OTTname);
+                      }}
+                    />
+                  </td>
+                  <td rowSpan="1" className="ott-td">
+                    <img
+                      style={{
+                        display: "inline-block",
+                        width: "120px",
+                        height: "10vh",
+                      }}
+                      src={OTTLogoImage.WATCHA}
+                      alt="WATCHA Logo Image"
+                      onClick={function () {
+                        setOTTname("WATCHA");
+                        console.log(OTTname);
+                      }}
+                    />
+                  </td>
+                </tr>
+                <tr className="ott-name">
+                  <td>
+                    <b>NETFLIX</b>
+                  </td>
+                  <td>
+                    <b>WATCHA</b>
+                  </td>
+                </tr>
+                <tr className="ott-name">
+                  <td rowSpan="1" className="ott-td">
+                    <img
+                      style={{
+                        display: "inline-block",
+                        width: "100px",
+                        height: "auto",
+                      }}
+                      src={OTTLogoImage.WAVVE}
+                      alt="WAVVE Logo Image"
+                      onClick={function () {
+                        setOTTname("WAVVE");
+                        console.log(OTTname);
+                      }}
+                    />
+                  </td>
+                  <td rowSpan="1" className="ott-td">
+                    <img
+                      style={{
+                        display: "inline-block",
+                        width: "100px",
+                        height: "auto",
+                      }}
+                      src={OTTLogoImage.TVING}
+                      alt="TVING Logo Image"
+                      onClick={function () {
+                        setOTTname("TVING");
+                        console.log(OTTname);
+                      }}
+                    />
+                  </td>
+                </tr>
+                <tr className="ott-name">
+                  <td>
+                    <b>NETFLIX</b>
+                  </td>
+                  <td>
+                    <b>WATCHA</b>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "auto",
+              height: "6vh",
+            }}
+          >
+            <button
+              className="submit"
               style={{
-                width: "auto",
-                height: "30vh",
-                backgroundColor: "#ffecee",
-                marginBottom: "30px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                marginTop: "10px",
               }}
             >
-              <h1 style={{ width: "100%", marginBottom: "100px" }}>
-                보고싶은 OTT를 선택해주세요
-              </h1>
-              <div
+              <Link
+                to="/Grouppage"
                 style={{
-                  width: "100%",
-                  height: "100px",
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                  flexWrap: "wrap",
+                  color: "white",
+                  textDecoration: "none",
                 }}
               >
-                <img
-                  style={{
-                    display: "inline-block",
-                    width: "15%",
-                    height: "10vh",
-                  }}
-                  src={OTTLogoImage.NETFLIX}
-                  alt="NETFLIX Logo Image"
-                  onClick={function () {
-                    setOTTname("NETFLIX");
-                    console.log(OTTname);
-                  }}
-                />
-                <img
-                  style={{
-                    display: "inline-block",
-                    width: "15%",
-                    height: "10vh",
-                  }}
-                  src={OTTLogoImage.WATCHA}
-                  alt="WATCHA Logo Image"
-                  onClick={function () {
-                    setOTTname("WATCHA");
-                    console.log(OTTname);
-                  }}
-                />
-                <img
-                  style={{
-                    display: "inline-block",
-                    width: "15%",
-                    height: "10vh",
-                  }}
-                  src={OTTLogoImage.WAVVE}
-                  alt="WAVVE Logo Image"
-                  onClick={function () {
-                    setOTTname("WAVVE");
-                    console.log(OTTname);
-                  }}
-                />
-                <img
-                  style={{
-                    display: "inline-block",
-                    width: "15%",
-                    height: "10vh",
-                  }}
-                  src={OTTLogoImage.TVING}
-                  alt="TVING Logo Image"
-                  onClick={function () {
-                    setOTTname("TVING");
-                    console.log(OTTname);
-                  }}
-                />
-              </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "auto",
-                height: "6vh",
-                backgroundColor: "#ffecee",
-              }}
-            >
-              <button style={{}}>
-                <Link
-                  to="/Grouppage"
-                  style={{
-                    textDecoration: "none",
-                  }}
-                >
-                  그룹참가
-                </Link>
-              </button>
-            </div>
+                <b>그룹참가</b>
+              </Link>
+            </button>
           </div>
-
-          <div style={{ flexBasis: "30%", flexShrink: "0" }}></div>
         </div>
       </div>
     </div>
