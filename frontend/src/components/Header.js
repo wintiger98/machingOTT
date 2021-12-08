@@ -8,30 +8,14 @@ export default function Header({ LoginState, AttendState }) {
   const [isActive, setisActive] = useState(
     () => JSON.parse(localStorage.getItem("name")) || 0
   );
-  const [isAttend, setisAttend] = useState(false);
-  var checkUser = localStorage.getItem("name");
-  console.log(isActive);
-
-  useEffect(() => {
-    setisAttend(AttendState);
-  }, [AttendState]);
-
-  useEffect(() => {
-    if (checkUser != null) {
-      setisActive(true);
-      //console.log(isActive);
-    } else {
-      setisActive(false);
-      //console.log(isActive);
-    }
-    return () => {
-      //console.log("현재 페이지에서 벗어남");
-    };
-  });
+  const [isAttend, setisAttend] = useState(
+    () => JSON.parse(localStorage.getItem("OTT")) || 0
+  );
 
   const handleFormLogout = (event) => {
     event.preventDefault();
     localStorage.removeItem("name");
+    localStorage.removeItem("OTT");
     window.location.replace("/");
   };
 
@@ -95,19 +79,6 @@ export default function Header({ LoginState, AttendState }) {
             홈
           </a>
 
-          <a
-            href="/selectOTT"
-            style={{
-              fontFamily: "GmarketSansLight",
-              fontSize: "18px",
-              fontWeight: "bold",
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
-            그룹선택
-          </a>
-
           {isAttend ? (
             <a
               href="/Grouppage"
@@ -123,7 +94,18 @@ export default function Header({ LoginState, AttendState }) {
               MY그룹
             </a>
           ) : (
-            <br />
+            <a
+              href="/selectOTT"
+              style={{
+                fontFamily: "GmarketSansLight",
+                fontSize: "18px",
+                fontWeight: "bold",
+                textDecoration: "none",
+                color: "black",
+              }}
+            >
+              그룹선택
+            </a>
           )}
         </div>
 
@@ -202,6 +184,22 @@ export default function Header({ LoginState, AttendState }) {
     </div>
   );
 }
+
+// var checkUser = localStorage.getItem("name");
+// console.log(isActive);
+
+// useEffect(() => {
+//   if (checkUser != null) {
+//     setisActive(true);
+//     //console.log(isActive);
+//   } else {
+//     setisActive(false);
+//     //console.log(isActive);
+//   }
+//   return () => {
+//     //console.log("현재 페이지에서 벗어남");
+//   };
+// });
 
 // const Header = () => (
 //   <div style={{ width: "100%", margin: "0" }}>

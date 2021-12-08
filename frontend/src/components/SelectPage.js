@@ -18,6 +18,13 @@ export default function SelectPage() {
       "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/TVING_logo.svg/512px-TVING_logo.svg.png",
   };
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    localStorage.setItem("OTT", JSON.stringify(OTTname));
+    window.location.replace("/Grouppage");
+  };
+
   return (
     <div>
       {/* 상단 바 시작 */}
@@ -132,21 +139,21 @@ export default function SelectPage() {
               height: "6vh",
             }}
           >
-            <button
-              className="submit"
-              style={{
-                marginTop: "10px",
-              }}
-            >
-              <Link
-                to="/Grouppage"
+            <button className="submit">
+              {" "}
+              <a
+                href="#"
                 style={{
-                  color: "white",
+                  fontFamily: "GmarketSansLight",
+                  fontSize: "20px",
+                  fontWeight: "bold",
                   textDecoration: "none",
+                  color: "white",
                 }}
+                onClick={handleFormSubmit}
               >
-                <b>그룹참가</b>
-              </Link>
+                그룹참가
+              </a>
             </button>
           </div>
         </div>

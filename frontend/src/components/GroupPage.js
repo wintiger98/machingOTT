@@ -10,6 +10,7 @@ export default function GroupPage() {
 
   const handleFormGroupOut = (event) => {
     event.preventDefault();
+    localStorage.removeItem("OTT");
     window.location.replace("/");
   };
 
